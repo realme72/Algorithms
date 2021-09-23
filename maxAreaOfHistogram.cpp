@@ -2,23 +2,18 @@
 using namespace std;
 
 int maxAreaOfHistogram(vector<int> &v) {
-	int n = v.size();
+	v.push_back(0);
+    	int n = v.size(), area = 0;
 	stack<int> s;
-	int h, w, ans = 0;
-
-
-	for(int i = 0; i < n; ++i) {
-		while(!s.empty() and (v[i] <= v[s.top()] || i == n)) {
-			h = v[s.top()];
-			s.pop();
-			w = s.empty() ? i : i - s.top() - 1;
-			ans = max(ans, h * w);
+	for (int i = 0; i < n; i++) {
+		while (!s.empty() && v[s.top()] > v[i]) {
+			int h = v[s.top()]; s.pop();
+			int l = s.empty() ? -1 : s.top();
+			area = max(area, h * (i - l - 1));
 		}
-
 		s.push(i);
 	}
-
-	return ans;
+	return area;
 }
 
 int main() {
