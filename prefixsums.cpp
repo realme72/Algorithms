@@ -7,6 +7,7 @@ using ll = long long int;
 #define all(a) a.begin(),a.end()
 #define gaurav main
 #define prec(n) fixed<<setprecision(n)
+// you can save space by utilizing the same array
 
 
 void solve() {
@@ -19,6 +20,11 @@ void solve() {
 	for(int i = 1; i <= n; ++i) {
 		prefixsum[i] = prefixsum[i - 1] + a[i - 1];
 	}
+	// you can save space by utilizing the same array
+
+// 	for(int i = 1; i < n; ++i) {
+// 		a[i] += a[i-1];
+// 	}		
 	
 	
 	for(auto i : prefixsum) cout << i << " ";
