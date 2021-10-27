@@ -2,6 +2,27 @@
 #include"bits/stdc++.h"
 using namespace std;
 
+
+// to find the height of tree if root node was given
+
+class Node{
+	public:
+	int val;
+	Node* left, *right;
+}	
+
+int TreeHeight(Node* root) {
+	if(root == nullptr) {
+		return 0;
+	}
+	
+	int l = TreeHeight(root->left);
+	int r = TreeHeight(root->right);
+	
+	return max(l, r) + 1;
+}	
+
+
 const int N = 1000;
 vector<int> t[N];
 int in[N], out[N], n;
